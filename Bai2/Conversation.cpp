@@ -34,12 +34,9 @@ int Conversation::getMaxCalls() {return this->maxCalls;}
 
 std::string Conversation::toString()
 {
-    std::string s = "Conversation Information: \n";
+    std::string s = "\t\tConversation Information: \n";
     s += "Id: ";
-    // for (int i = 0; this->conversationId[i] != '\0'; ++i)
-    // {
-    //     s += to_string(int(this->conversationId[i])) + '-';
-    // }
+
     s += this->conversationId;
     s += '\n';
     if (this->maxCalls <= NORMALCONVERSATION)

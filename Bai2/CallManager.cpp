@@ -1,6 +1,6 @@
 #include "CallManager.h"
-#include <algorithm>>
-
+#include <algorithm>
+#include <cstring>
 CallManager::CallManager()
 {
 
@@ -23,7 +23,7 @@ void CallManager::addCall(Call call)
     this->callList.push_back(call);
 }
 
-void CallManager::cancelCall(Call call)
+void CallManager::cancelCall(int index)
 {
-    this->callList.erase(find(this->callList.begin(), this->callList.end(), call));
+    this->callList.erase(this->callList.begin() + index);
 }

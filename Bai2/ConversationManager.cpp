@@ -22,7 +22,7 @@ void ConversationManager::addConversation(Conversation conversation)
 {
         this->conversationList.push_back(conversation);
 }
-void ConversationManager::cancelConversation(Conversation conversation)
+void ConversationManager::cancelConversation(int index)
 {
-    this->conversationList.erase(find(this->conversationList.begin(), this->conversationList.end(), conversation));
+    this->conversationList.erase(this->conversationList.begin() + index);
 }

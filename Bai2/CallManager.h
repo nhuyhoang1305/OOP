@@ -16,5 +16,5 @@ public:
     void setCallList(std::vector<Call> callList);
     std::vector<Call> getCallList();
     void addCall(Call call);
-    void cancelCall(Call call);
+    void cancelCall(int index);
 };

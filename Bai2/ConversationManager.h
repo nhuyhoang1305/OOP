@@ -16,5 +16,5 @@ public:
     void setConversationList(std::vector<Conversation> conversationList);
     std::vector<Conversation> getConversationList();
     void addConversation(Conversation conversation);
-    void cancelConversation(Conversation conversation);
+    void cancelConversation(int index);
 };

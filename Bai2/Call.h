@@ -13,6 +13,8 @@ private:
 
 public:
 
+    bool operator==(Call call);
+
     // constructor
     Call();
     ~Call();

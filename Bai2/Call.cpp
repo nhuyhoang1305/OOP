@@ -1,5 +1,11 @@
 #include "Call.h"
 #include "helpers.h"
+#include <cstring>
+
+bool Call::operator==(Call call)
+{
+    return strcmp(this->callId, call.getCallId());
+}
 
 // constructor
 Call::Call()
@@ -49,6 +55,5 @@ std::string Call::toString()
     {
         callId += this->callId[i];
     }
-    channelId = "" + this->channelId;
-    return "Call Information:\nId: " + callId + "\nType: " + type + "\nChannel Id: " + channelId + "\nConversation Type: " + conversationType + '\n';
+    return "\t\tCall Information:\nId: " + callId + "\nType: " + type + "\nChannel Id: " + std::__cxx11::to_string(this->channelId) + "\nConversation Type: " + conversationType + '\n';
 }
