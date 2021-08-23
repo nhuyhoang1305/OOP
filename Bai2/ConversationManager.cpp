@@ -9,16 +9,16 @@ ConversationManager::~ConversationManager()
 {
 
 }
-ConversationManager::ConversationManager(std::vector<Conversation> conversationList)
+ConversationManager::ConversationManager(std::vector<Conversation *> conversationList)
 {
     this->conversationList = conversationList;
 }
 
 // setter, getter
-void ConversationManager::setConversationList(std::vector<Conversation> conversationList) { this->conversationList = conversationList; } 
-std::vector<Conversation> ConversationManager::getConversationList() { return this->conversationList; }
+void ConversationManager::setConversationList(std::vector<Conversation *> conversationList) { this->conversationList = conversationList; } 
+std::vector<Conversation *> ConversationManager::getConversationList() { return this->conversationList; }
 
-void ConversationManager::addConversation(Conversation conversation)
+void ConversationManager::addConversation(Conversation *conversation)
 {
         this->conversationList.push_back(conversation);
 }

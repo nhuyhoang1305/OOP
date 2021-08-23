@@ -6,15 +6,15 @@
 class ConversationManager
 {
 private:
-    std::vector<Conversation> conversationList;
+    std::vector<Conversation *> conversationList;
 public:
 
     ConversationManager();
     ~ConversationManager();
-    ConversationManager(std::vector<Conversation> conversationList);
+    ConversationManager(std::vector<Conversation *> conversationList);
 
-    void setConversationList(std::vector<Conversation> conversationList);
-    std::vector<Conversation> getConversationList();
-    void addConversation(Conversation conversation);
+    void setConversationList(std::vector<Conversation *> conversationList);
+    std::vector<Conversation *> getConversationList();
+    void addConversation(Conversation *conversation);
     void cancelConversation(int index);
 };

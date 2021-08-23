@@ -45,14 +45,14 @@ std::string Person::getDepartment()
     return this->department;
 }
 
-void Person::print()
+void Person::information()
 {
     std::cout << "Name: " << this->name << '\n';
     std::cout << "Address: " << this->address << '\n';
     std::cout << "Department: " << this->department << '\n';
 }
 
-std::string Person::toString()
+std::string Person::info()
 {
     return "Name: " + this->name + "\nAddress: " + this->address + "\nDepartment: " + this->department + '\n';
 }

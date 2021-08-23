@@ -24,15 +24,8 @@ void printSummaryStatisics();
 
 int main(int argc, char *argv[])
 {
-    if (argc == 1)
-    {
-        cout << "No command\n";
-    }
-    else
-    {
-        
-    }
-    while(true)
+    
+    while (true)
     {
         system("clear");
         menu();
@@ -93,17 +86,16 @@ void createConversation()
     }
     if (choice == 1)
     {
-        NormalConversation normalConversation(NORMALCONVERSATION);
-        normalConversation.setConversationId(generatorIdHelper());
-        conversationManager.addConversation(normalConversation);
+        Conversation *conversation = new NormalConversation(NORMALCONVERSATION);
+        conversation->setConversationId(generatorIdHelper());
+        conversationManager.addConversation(conversation);
     }
     else
     {
-        Conference conference(CONFERENCE);
-        conference.setConversationId(generatorIdHelper());
-        conversationManager.addConversation(conference);
+        Conversation *conversation = new Conference(CONFERENCE);
+        conversation->setConversationId(generatorIdHelper());
+        conversationManager.addConversation(conversation);
     }
-    char c; cin >> c;
 }
 
 void createCall()
@@ -118,7 +110,7 @@ void createCall()
         cout << "Invalid!\n";
         cin >> choice;
     }
-    int typeCall = choice-1;
+    int typeCall = choice - 1;
     cout << "1. Normal Conversation\n";
     cout << "2. Conference\n";
     cin >> choice;
@@ -127,14 +119,11 @@ void createCall()
         cout << "Invalid!\n";
         cin >> choice;
     }
-    int typeConversation = choice+1;
-    
+    int typeConversation = choice + 1;
+
     Call call(generatorIdHelper(), typeCall, generatorChannelIdHelper(), typeConversation);
 
     callManager.addCall(call);
-    //cout << call.toString();
-    char c; cin >> c;
-
 }
 
 void cancelCall()
@@ -143,11 +132,13 @@ void cancelCall()
     cout << "List call: \n";
     for (int i = 0; i < callManager.getCallList().size(); ++i)
     {
-        cout << i+1 <<": " << "Id: " << callManager.getCallList()[i].getCallId() << '\n';
+        cout << i + 1 << ": "
+             << "Id: " << callManager.getCallList()[i].getCallId() << '\n';
     }
     int choice;
-    cout << "Nhap stt: "; cin >> choice;
-    callManager.cancelCall(choice-1);
+    cout << "Nhap stt: ";
+    cin >> choice;
+    callManager.cancelCall(choice - 1);
 }
 
 void cancelConversation()
@@ -155,44 +146,48 @@ void cancelConversation()
     cout << "List conversation: \n";
     for (int i = 0; i < conversationManager.getConversationList().size(); ++i)
     {
-        cout << i+1 <<": " << "Id: " << conversationManager.getConversationList()[i].getConversationId() << '\n';
+        cout << i + 1 << ": "
+             << "Id: " << conversationManager.getConversationList()[i]->getConversationId() << '\n';
     }
     int choice;
-    cout << "Nhap stt: "; cin >> choice;
+    cout << "Nhap stt: ";
+    cin >> choice;
     for (int i = 0; i < conversationManager.getConversationList().size(); ++i)
     {
         callManager.cancelCall(i);
     }
-    conversationManager.cancelConversation(choice-1);
+    conversationManager.cancelConversation(choice - 1);
 }
 
 void findConversationById()
 {
     system("clear");
-    char *conversationId= new char[1000];
-    cout << "Nhap Id conversation can tim: ";  cin >> conversationId;
-    
-    for (Conversation conversation: conversationManager.getConversationList())
+    char *conversationId = new char[1000];
+    cout << "Nhap Id conversation can tim: ";
+    cin >> conversationId;
+
+    for (Conversation *conversation : conversationManager.getConversationList())
     {
-        if (strcmp(conversation.getConversationId(), conversationId))
+        if (strcmp(conversation->getConversationId(), conversationId))
         {
-            cout << conversation.toSting() << endl;
+            cout << conversation->toString() << endl;
         }
     }
     delete[] conversationId;
-
 }
 
 void findConversationIdByCallId()
 {
+    system("clear");
     char *callId = new char[1000];
-    for (Conversation conversation : conversationManager.getConversationList())
+    cout << "Nhap id can tim: "; cin >> callId;
+    for (Conversation *conversation : conversationManager.getConversationList())
     {
-        for (Call call : conversation.getCallList())
+        for (Call call : conversation->getCallList())
         {
-            if (strcmp(call.getCallId, callId))
+            if (strcmp(call.getCallId(), callId))
             {
-                cout << conversation.getConversationId() << endl;
+                cout << conversation->getConversationId() << endl;
                 break;
             }
         }
@@ -204,9 +199,9 @@ void printSummaryStatisics()
 {
     cout << "So luong cac cuoc goi: " << callManager.getCallList().size() << '\n';
     cout << "So luong conversation: " << conversationManager.getConversationList().size() << '\n';
-    for (Conversation conversation : conversationManager.getConversationList())
+    for (Conversation *conversation : conversationManager.getConversationList())
     {
-        cout << "Conversation Id: " << conversation.getConversationId() << '\n';
-        cout << "So luong cuoc goi dang co: " << conversation.getCallList().size() << "\n\n";
+        cout << "Conversation Id: " << conversation->getConversationId() << '\n';
+        cout << "So luong cuoc goi dang co: " << conversation->getCallList().size() << "\n\n";
     }
 }

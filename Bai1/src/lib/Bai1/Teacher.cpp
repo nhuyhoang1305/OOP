@@ -26,10 +26,11 @@ std::string Teacher::getRank()
 
 void Teacher::print()
 {
-    super::print();
+    std::cout << "Teacher information\n";
+    super::information();
     std::cout << "Rank: " << this->rank << '\n';
 }
 std::string Teacher::toString()
 {
-    return super::toString() + "Rank: " + this->rank + '\n';
+    return super::info() + "Rank: " + this->rank + '\n';
 }

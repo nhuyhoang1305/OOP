@@ -7,4 +7,6 @@ public:
     NormalConversation();
     ~NormalConversation();
     NormalConversation(int maxCalls);
+
+    std::string toString();
 };

@@ -31,25 +31,3 @@ void Conversation::setConversationId(char *conversationId) { this->conversationI
 char *Conversation::getConversationId() { return this->conversationId; }
 void Conversation::setMaxCalls(int maxCalls) {this->maxCalls = maxCalls;}
 int Conversation::getMaxCalls() {return this->maxCalls;}
-
-std::string Conversation::toString()
-{
-    std::string s = "\t\tConversation Information: \n";
-    s += "Id: ";
-
-    s += this->conversationId;
-    s += '\n';
-    if (this->maxCalls <= NORMALCONVERSATION)
-    {
-        s += "Type: Normal Conversation\n";
-    }
-    else 
-    {
-        s += "Type: Conference\n";
-    }
-    for (Call call : this->callList)
-    {
-        s += call.toString();
-    }
-    return s;
-}

@@ -27,10 +27,11 @@ std::string Student::getClass()
 
 void Student::print()
 {
-    super::print();
+    std::cout << "Student information\n";
+    super::information();
     std::cout << "Class: " << this->_class << '\n';
 }
 std::string Student::toString()
 {
-    return super::toString() + "Class: " + this->_class + "\n";
+    return super::info() + "Class: " + this->_class + "\n";
 }

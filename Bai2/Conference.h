@@ -6,4 +6,6 @@ public:
     Conference();
     ~Conference();
     Conference(int maxCalls);
+
+    std::string toString();
 };

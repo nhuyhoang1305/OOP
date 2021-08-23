@@ -26,8 +26,10 @@ public:
     std::string getName();
     std::string getAddress();
     std::string getDepartment();
-
-    virtual void print();
-    virtual std::string toString();
+    void information();
+    std::string info();
+    
+    virtual void print() = 0;
+    virtual std::string toString() = 0;
 };
 #endif

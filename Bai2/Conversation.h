@@ -22,5 +22,6 @@ public:
     std::vector<Call> getCallList();
     void setConversationId(char *conversationId);
     char *getConversationId();
-    std::string toString();
+    
+    virtual std::string toString() = 0;
 };
